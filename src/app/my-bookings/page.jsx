@@ -10,16 +10,17 @@ export const metadata = {
   description: "Manage your bookings",
 };
 
+import dbConnect, { collectionNamesObj } from "@/lib/dbConnect";
+
 const fetchMyBookings = async (session) => {
-  const res = await fetch(
-    `${process.env.NEXTAUTH_URL}/api/booking?email=${session?.user?.email}`,
-    {
-      cache: "no-store", // Ensure dynamic fetching
-    }
-  );
-  if (!res.ok) return [];
-  const d = await res.json();
-  return d;
+  const email = session?.user?.email;
+  const bookingCollection = dbConnect(collectionNamesObj.bookingCollection);
+  let query = {};
+  if (email) {
+    query = { email: email };
+  }
+  const result = await bookingCollection.find(query).toArray();
+  return result;
 };
 
 export default async function MyBookingsPage() {
