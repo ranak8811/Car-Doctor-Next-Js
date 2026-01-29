@@ -1,0 +1,152 @@
+[
+  {
+    "service_id": "01",
+    "title": "Full Car Repair",
+    "img": "https://i.ibb.co/R6Z2nFM/55.jpg",
+    "price": "200.00",
+    "description": "Our Full Car Repair service covers every aspect of your vehicle to ensure it runs like new. From engine diagnostics to brake systems, suspension to exhaust, we handle it all. Our certified mechanics use state-of-the-art equipment to identify issues and perform precise repairs, giving you peace of mind on the road.",
+    "facility": [
+      {
+        "name": "Comprehensive Diagnostics",
+        "details": "We perform a complete scan of complete vehicle systems to identify hidden issues."
+      },
+      {
+        "name": "Expert Engine Repair",
+        "details": "Deep inspection and repair of engine components for optimal performance."
+      },
+      {
+        "name": "Brake & Suspension",
+        "details": "Full check-up and repair of braking systems and suspension for safety."
+      },
+      {
+        "name": "Fluid Top-up",
+        "details": "Checking and refilling all necessary fluids including coolant and brake fluid."
+      }
+    ]
+  },
+  {
+    "service_id": "02",
+    "title": "Engine Repair",
+    "img": "https://i.ibb.co/5MvmD2g/88.jpg",
+    "price": "150.00",
+    "description": "Your engine is the heart of your car. Our Engine Repair service is designed to fix everything from minor oil leaks to major internal damage. We specialize in head gasket replacements, piston ring repairs, and timing belt services to extend the life of your vehicle.",
+    "facility": [
+      {
+        "name": "Timing Belt Replacement",
+        "details": "Timely replacement of timing belts to prevent catastrophic engine failure."
+      },
+      {
+        "name": "Gasket & Seal Repair",
+        "details": "Fixing leaks to ensure your engine maintains proper pressure and fluid levels."
+      },
+      {
+        "name": "Spark Plug Service",
+        "details": "Replacing worn spark plugs to improve fuel efficiency and cold starts."
+      },
+      {
+        "name": "Compression Testing",
+        "details": "Testing engine cylinders ensuring consistent power delivery."
+      }
+    ]
+  },
+  {
+    "service_id": "03",
+    "title": "Automatic Services",
+    "img": "https://i.ibb.co/wh7t3N3/555.jpg",
+    "price": "30.00",
+    "description": "Modern vehicles rely heavily on automatic systems. We offer specialized services for automatic transmissions, power steering, and computerized control modules. Our team ensures that your automatic features function smoothly and responsively.",
+    "facility": [
+      {
+        "name": "Transmission Fluid Change",
+        "details": "Replacing old fluid to ensure smooth gear shifts and longevity."
+      },
+      {
+        "name": "Computer Diagnostics",
+        "details": "Scanning TCU (Transmission Control Unit) for error codes and faults."
+      },
+      {
+        "name": "Sensor Calibration",
+        "details": "Calibrating speed and pressure sensors for accurate operation."
+      },
+      {
+        "name": "Leak Detection",
+        "details": "Identifying and sealing hydraulic leaks in the automatic system."
+      }
+    ]
+  },
+  {
+    "service_id": "04",
+    "title": "Engine Oil Change",
+    "img": "https://i.ibb.co/T2cpBd5/888.jpg",
+    "price": "20.00",
+    "description": "Regular oil changes are vital for your engine's health. We use high-quality synthetic or conventional oils to lubricate engine parts, reduce friction, and prevent overheating. This service includes a new oil filter and a multi-point inspection.",
+    "facility": [
+      {
+        "name": "Premium Oil",
+        "details": "We use only top-grade oil suitable for your specific vehicle model."
+      },
+      {
+        "name": "Filter Replacement",
+        "details": "Replacing the oil filter to keep contaminants out of your engine."
+      },
+      {
+        "name": "Fluid Check",
+        "details": "Complementary check of washer, brake, and power steering fluids."
+      },
+      {
+        "name": "Eco-friendly Disposal",
+        "details": "Responsible recycling of your old oil and filters."
+      }
+    ]
+  },
+  {
+    "service_id": "05",
+    "title": "Battery Charge",
+    "img": "https://i.ibb.co/ydCbDN3/5555.jpg",
+    "price": "20.00",
+    "description": "A dead battery shouldn't leave you stranded. Our Battery Charge and Replacement service checks your battery's health, alternator performance, and starter motor. We provide quick jump-starts, full recharges, or brand-new battery installations.",
+    "facility": [
+      {
+        "name": "Voltage Testing",
+        "details": "Accurate testing to determine if the battery needs charging or replacement."
+      },
+      {
+        "name": "Terminal Cleaning",
+        "details": "Removing corrosion from terminals for a perfect electrical connection."
+      },
+      {
+        "name": "Alternator Check",
+        "details": "Verifying that your car is properly charging the battery while running."
+      },
+      {
+        "name": "Warranty Support",
+        "details": "We provide batteries with manufacturer warranties for peace of mind."
+      }
+    ]
+  },
+  {
+    "service_id": "06",
+    "title": "Electrical System",
+    "img": "https://i.ibb.co/KzCG8qr/8888.jpg",
+    "price": "20.00",
+    "description": "From headlights to dashboard lights, our Electrical System service ensures your car's electronics are fully functional. We troubleshoot wiring issues, fix blown fuses, and repair power windows, locks, and entertainment systems.",
+    "facility": [
+      {
+        "name": "Wiring Inspection",
+        "details": "Tracing and repairing damaged wires to prevent shorts and fires."
+      },
+      {
+        "name": "Fuse Replacement",
+        "details": "Replacing blown fuses and identifying the root cause of the surge."
+      },
+      {
+        "name": "Lighting Repair",
+        "details": "Fixing headlights, taillights, and interior dome lights."
+      },
+      {
+        "name": "Accessory Repair",
+        "details": "Troubleshooting power windows, door locks, and audio systems."
+      }
+    ]
+  }
+]
