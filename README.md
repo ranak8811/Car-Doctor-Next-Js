@@ -5,6 +5,7 @@
 ## 🌟 Key Features
 
 *   **Authentication**: Secure user registration and login using **NextAuth.js**.
+    *   **Role-Based Access Control (RBAC)**: Admin routes are protected and accessible only to admin users.
     *   **Social Login**: Support for Google and GitHub authentication.
     *   **Image Upload**: Users can upload profile pictures via ImgBB during registration.
 *   **Service Browsing**: detailed service pages with facilities, descriptions, and pricing.
@@ -12,7 +13,7 @@
     *   **Direct Booking**: Book specific services directly from their details page.
     *   **General Appointment**: dedicated appointment page to book any service.
 *   **User Dashboard (My Bookings)**:
-    *   View all bookings with status (Pending/Confirmed).
+    *   **View Bookings**: View all bookings with status (Pending/Confirmed).
     *   **Update Status**: Confirm bookings directly from the dashboard.
     *   **Delete Bookings**: Cancel appointments with confirmation alerts.
 *   **Advanced Service Discovery**:
@@ -21,7 +22,8 @@
 *   **User Engagement**:
     *   **Service Reviews**: Authenticated users can rate and review services.
     *   **Profile Management**: Users can update their display name and profile picture.
-*   **Admin Dashboard**:
+*   **Admin Dashboard** (Protected):
+    *   **Secure Access**: Only accessible to users with `role: "admin"`.
     *   **Manage Services**: Add, edit, and delete services securely.
     *   **Booking Management**: View all user bookings and update their status (e.g., confirm pending bookings).
 *   **Dynamic Metadata**: SEO-friendly dynamic page titles for Services and Checkout pages.
@@ -30,7 +32,7 @@
 
 ## 🛠️ Tech Stack
 
-*   **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+*   **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
 *   **Language**: JavaScript
 *   **Styling**: [Tailwind CSS](https://tailwindcss.com/) & [DaisyUI](https://daisyui.com/)
 *   **Database**: [MongoDB](https://www.mongodb.com/)
@@ -90,6 +92,17 @@
     ```
 
 5.  Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### 🧪 Testing Credentials
+
+To test the role-based features, you can use the quick login buttons on the login page or the following credentials:
+
+*   **Admin User**:
+    *   Email: `admin1@gmail.com`
+    *   Password: `admin1#123`
+*   **Standard User**:
+    *   Email: `alex@gmail.com`
+    *   Password: `alex#123`
 
 ## 📦 Deployment
 
