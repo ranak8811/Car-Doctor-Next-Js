@@ -9,8 +9,12 @@ export const middleware = async (req) => {
         secureCookie: process.env.NODE_ENV === "production" ? true : false,
     })
 
-    if (token) {
+    const path = req.nextUrl.pathname;
 
+    if (token) {
+        if (path.startsWith('/admin') && token.role !== 'admin') {
+            return NextResponse.redirect(new URL('/', req.url));
+        }
         return NextResponse.next()
     } else {
         return NextResponse.redirect(new URL('/login', req.url))
@@ -22,6 +26,7 @@ export const config = {
     matcher: [
         '/my-bookings',
         '/my-bookings/:path*',
-        "/checkout/:path*"
+        "/checkout/:path*",
+        "/admin/:path*"
     ],
 }

@@ -18,10 +18,8 @@ export const authOptions = {
                 password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req) {
-                console.log(credentials)
                 // Add logic here to look up the user from the credentials supplied
                 const user = await loginUser(credentials)
-                console.log(user)
                 if (user) {
                     // Any object returned will be saved in `user` property of the JWT
                     return user
@@ -57,11 +55,46 @@ export const authOptions = {
                 const userCollection = dbConnect(collectionNamesObj.userCollection)
                 const isExisted = await userCollection.findOne({ providerAccountId })
                 if (!isExisted) {
-                    const payload = { providerAccountId, provider, email: user_email, image, name, }
+                    const payload = { providerAccountId, provider, email: user_email, image, name, role: 'user' }
                     await userCollection.insertOne(payload)
                 }
             }
             return true
         },
+        async jwt({ token, user, account, profile }) {
+            if (user) {
+                token.role = user.role
+                token.id = user._id
+            }
+            // If it's an OAuth login (account is present), we might need to fetch the role from DB if it wasn't passed in `user`
+            // But for efficiency, let's assume `loginUser` returns the full user object including role for credentials.
+            // For OAuth, the `signIn` callback runs before `jwt` partially, but `user` in `jwt` on first sign in is the profile info.
+            // It gets complicated. A robust way is to fetch from DB if role is missing in token.
+
+            // However, sticking to the plan:
+            // For credentials, `authorize` returns the user object. If that object has `role`, it lands in `user` here.
+
+            // For OAuth, subsequent requests won't have `user` or `account`. We need to rely on what's in `token`.
+
+            // Let's reload user from DB if we want to be super sure, or just trust the initial load.
+            // For now, let's try to keeping it simple:
+            if (account && user) {
+                // Fetch real user from DB to get the role because the initial `user` object from OAuth provider definitely doesn't have our DB role.
+                const userCollection = dbConnect(collectionNamesObj.userCollection)
+                const dbUser = await userCollection.findOne({ email: token.email })
+                if (dbUser) {
+                    token.role = dbUser.role
+                    token.id = dbUser._id
+                }
+            }
+            return token
+        },
+        async session({ session, token }) {
+            if (token) {
+                session.user.role = token.role
+                session.user.id = token.id
+            }
+            return session
+        }
     }
 }

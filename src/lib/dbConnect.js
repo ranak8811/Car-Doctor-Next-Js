@@ -3,7 +3,8 @@ import { MongoClient, ServerApiVersion } from "mongodb";
 export const collectionNamesObj = {
     servicesCollection: "services",
     userCollection: "users",
-    bookingCollection: "bookings"
+    bookingCollection: "bookings",
+    reviewCollection: "reviews"
 }
 
 const uri = process.env.NEXT_PUBLIC_MONGODB_URI

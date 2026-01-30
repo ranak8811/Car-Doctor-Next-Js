@@ -1,9 +1,9 @@
-import { getServiceById } from "@/lib/getServices";
+import { getServiceById, getRelatedServices } from "@/lib/getServices";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Banner from "@/components/Banner";
-
+import ServiceReviews from "@/components/ServiceReviews";
 export async function generateMetadata({ params }) {
   const p = await params;
   const service = await getServiceById(p.id);
@@ -16,6 +16,7 @@ export async function generateMetadata({ params }) {
 export default async function ServiceDetailsPage({ params }) {
   const p = await params;
   const data = await getServiceById(p.id);
+  const relatedServices = await getRelatedServices(p.id);
 
   if (!data) {
     return <div className="text-center mt-20">Service not found</div>;
@@ -61,6 +62,10 @@ export default async function ServiceDetailsPage({ params }) {
           <p className="text-[#737373] text-justify leading-relaxed">
             {data.description}
           </p>
+
+          {/* Reviews Section */}
+          <ServiceReviews serviceId={data._id || data.service_id} />
+
         </div>
 
         {/* Right Side: Sidebar */}
@@ -68,15 +73,16 @@ export default async function ServiceDetailsPage({ params }) {
           <div className="bg-[#F3F3F3] p-8 rounded-lg">
             <h3 className="text-2xl font-bold mb-4">Services</h3>
             <div className="space-y-4">
-              <button className="btn w-full bg-white justify-between hover:bg-[#FF3811] hover:text-white text-[#444]">
-                <span>Full Car Repair</span> <span className="text-[#FF3811] hover:text-white">➔</span>
-              </button>
-              <button className="btn w-full bg-[#FF3811] text-white justify-between">
-                <span>Engine Repair</span> <span>➔</span>
-              </button>
-              <button className="btn w-full bg-white justify-between hover:bg-[#FF3811] hover:text-white text-[#444]">
-                <span>Automatic Services</span> <span className="text-[#FF3811] hover:text-white">➔</span>
-              </button>
+              {relatedServices.map((service) => (
+                <Link
+                  key={service._id}
+                  href={`/services/${service._id}`}
+                  className="btn w-full bg-white justify-between hover:bg-[#FF3811] hover:text-white text-[#444] h-auto py-3"
+                >
+                  <span className="text-left">{service.title}</span>
+                  <span className="text-[#FF3811] hover:text-white">➔</span>
+                </Link>
+              ))}
             </div>
           </div>
 

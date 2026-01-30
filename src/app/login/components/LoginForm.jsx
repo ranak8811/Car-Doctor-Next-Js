@@ -13,11 +13,11 @@ export default function LoginForm() {
   const searchParams = useSearchParams();
   const path = searchParams.get("redirect");
 
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
     const toastId = toast.loading("Logging in...");
     try {
       const response = await signIn("credentials", {
@@ -29,7 +29,9 @@ export default function LoginForm() {
       if (response.ok) {
         toast.success("Logged In successfully", { id: toastId });
         router.push(path ? path : "/");
-        form.reset();
+        // Form reset handled by state
+        setEmail("");
+        setPassword("");
       } else {
         toast.error("User or Password not match", { id: toastId });
       }
@@ -38,10 +40,40 @@ export default function LoginForm() {
       toast.error("FAILED to Log In", { id: toastId });
     }
   };
+
+  const handleQuickLogin = (role) => {
+    if (role === 'admin') {
+      setEmail('admin1@gmail.com');
+      setPassword('admin1#123');
+    } else if (role === 'user') {
+      setEmail('alex@gmail.com');
+      setPassword('alex#123');
+    }
+  };
+
   return (
     <div className="card w-full max-w-lg shadow-2xl bg-base-100 border border-gray-200 p-8">
       <form onSubmit={handleSubmit} className="space-y-6">
         <h2 className="text-3xl font-bold text-center text-[#444] mb-4">Login</h2>
+
+        {/* Quick Login Buttons */}
+        <div className="flex gap-4 justify-center">
+          <button
+            type="button"
+            onClick={() => handleQuickLogin('user')}
+            className="btn btn-sm btn-outline btn-info"
+          >
+            User Login
+          </button>
+          <button
+            type="button"
+            onClick={() => handleQuickLogin('admin')}
+            className="btn btn-sm btn-outline btn-warning"
+          >
+            Admin Login
+          </button>
+        </div>
+
         <div className="form-control">
           <label className="label">
             <span className="label-text font-semibold text-[#444]">Email</span>
@@ -52,6 +84,8 @@ export default function LoginForm() {
             placeholder="email@example.com"
             className="input input-bordered focus:input-primary focus:outline-none"
             required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="form-control">
@@ -64,6 +98,8 @@ export default function LoginForm() {
             placeholder="Enter your password"
             className="input input-bordered focus:input-primary focus:outline-none"
             required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <label className="label mt-2">
             <a href="#" className="label-text-alt link link-hover text-[#FF3811] font-semibold">Forgot password?</a>

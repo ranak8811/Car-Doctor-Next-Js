@@ -20,7 +20,12 @@ const fetchMyBookings = async (session) => {
     query = { email: email };
   }
   const result = await bookingCollection.find(query).toArray();
-  return result;
+  return result.map(booking => ({
+    ...booking,
+    _id: booking._id.toString(),
+    // Convert service_id if it's an ObjectId, just in case, though usually it's stored as string or ObjectId
+    service_id: booking.service_id.toString()
+  }));
 };
 
 export default async function MyBookingsPage() {

@@ -1,5 +1,6 @@
-export const dynamic = "force-dynamic"; // Ensure dynamic rendering if needed
-import ServicesSection from "@/app/components/ServicesSection";
+export const dynamic = "force-dynamic";
+import ServiceFilter from "@/components/ServiceFilter";
+import { getServices } from "@/lib/getServices";
 import React from "react";
 
 export const metadata = {
@@ -7,7 +8,9 @@ export const metadata = {
     description: "Our Services",
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+    const services = await getServices();
+
     return (
         <div className="container mx-auto py-12">
             <div className="text-center mb-12">
@@ -18,7 +21,7 @@ export default function ServicesPage() {
                     or randomised words which don't look even slightly believable.
                 </p>
             </div>
-            <ServicesSection />
+            <ServiceFilter services={services} />
         </div>
     );
 }

@@ -1,0 +1,5 @@
+1. Add Service Search and Filter: Implement a search bar and sorting options (by price, alphabetical) on the Services page to help users find services easily.
+2. Add Service Review System: Allow authenticated users to leave star ratings and comments on individual service pages to provide social proof.
+3. Add User Profile Management: Create a profile page where users can update their display name and profile picture for a personalized experience.
+4. Add Admin Dashboard: Create a protected route for admins to add, edit, or delete services and manage all user bookings.
+5. Add Related Services: Display a list of related services on the service details page to encourage customers to book more services.

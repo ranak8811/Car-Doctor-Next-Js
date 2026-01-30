@@ -59,10 +59,20 @@ export default function NavBar() {
                   </div>
                   <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                     <li>
-                      <p className="justify-between">
-                        {session?.user?.name || "User"}
-                      </p>
+                      <div className="flex flex-col items-start gap-1 p-2">
+                        <p className="font-semibold text-base">{session?.user?.name || "User"}</p>
+                        <p className="text-xs text-secondary font-bold badge badge-outline capitalize">{session?.user?.role || "user"}</p>
+                      </div>
                     </li>
+                    <li>
+                      <Link href="/profile" className="justify-between">
+                        Profile
+                        <span className="badge">New</span>
+                      </Link>
+                    </li>
+                    {session?.user?.role === 'admin' && (
+                      <li><Link href="/admin/services">Admin Dashboard</Link></li>
+                    )}
                     <li><button onClick={() => signOut()}>Logout</button></li>
                   </ul>
                 </div>

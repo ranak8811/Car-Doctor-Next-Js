@@ -15,6 +15,15 @@
     *   View all bookings with status (Pending/Confirmed).
     *   **Update Status**: Confirm bookings directly from the dashboard.
     *   **Delete Bookings**: Cancel appointments with confirmation alerts.
+*   **Advanced Service Discovery**:
+    *   **Search & Filter**: Find services by name and sort by price or alphabetical order.
+    *   **Related Services**: Discover similar services on details pages to explore more options.
+*   **User Engagement**:
+    *   **Service Reviews**: Authenticated users can rate and review services.
+    *   **Profile Management**: Users can update their display name and profile picture.
+*   **Admin Dashboard**:
+    *   **Manage Services**: Add, edit, and delete services securely.
+    *   **Booking Management**: View all user bookings and update their status (e.g., confirm pending bookings).
 *   **Dynamic Metadata**: SEO-friendly dynamic page titles for Services and Checkout pages.
 *   **Responsive Design**: Fully responsive UI built with **Tailwind CSS** and **DaisyUI**.
 *   **Custom 404 Page**: professionally designed "Page Not Found" experience.
